@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.tasks.ui.addedittask.AddEditTaskActivity"></activity>
+        <activity android:name=".ui.tasks.ui.Tasks.TasksActivity">
+
+            <!-- ここの中で起動時のactivityを設定できるよ -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
