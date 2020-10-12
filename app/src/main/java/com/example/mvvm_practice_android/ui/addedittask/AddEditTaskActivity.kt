@@ -1,4 +1,4 @@
-package com.example.mvvm_practice_android.ui.tasks.ui.addedittask
+package com.example.mvvm_practice_android.ui.addedittask
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

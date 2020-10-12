@@ -1,6 +1,5 @@
-package com.example.mvvm_practice_android.ui.tasks.ui.Tasks
+package com.example.mvvm_practice_android.ui.tasks
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,18 +19,15 @@ class TasksFragment : Fragment() {
     private lateinit var binding: TasksFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        viewModel = TasksViewModel()
         binding = DataBindingUtil.inflate(inflater, R.layout.tasks_fragment, container, false)
+        binding.vm = viewModel
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.testText = "この文字はデータバインディングでセットした文字ですよ。"
+        viewModel.testText = "この文字はデータバインディング対象になったviewModelにプログラム側からセットした文字ですよ。"
     }
-
-//    override fun onViewCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProviders.of(this).get(TasksViewModel::class.java)
-//        // TODO: Use the ViewModel
-//    }
 }

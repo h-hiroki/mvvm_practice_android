@@ -4,20 +4,20 @@
 
     <data>
         <variable
-            name="testText"
-            type="String" />
+            name="vm"
+            type="com.example.mvvm_practice_android.ui.tasks.TasksViewModel" />
     </data>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.tasks.ui.Tasks.TasksFragment">
+        tools:context=".ui.tasks.TasksFragment">
 
         <TextView
+            android:id="@+id/testText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{testText}" />
+            android:text="@{vm.testText}" />
 
     </FrameLayout>
 </layout>

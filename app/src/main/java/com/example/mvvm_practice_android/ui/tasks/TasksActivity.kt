@@ -1,11 +1,11 @@
-package com.example.mvvm_practice_android.ui.tasks.ui.Tasks
+package com.example.mvvm_practice_android.ui.tasks
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.example.mvvm_practice_android.R
-import com.example.mvvm_practice_android.ui.tasks.ui.addedittask.AddEditTaskActivity
+import com.example.mvvm_practice_android.ui.addedittask.AddEditTaskActivity
 
 
 class TasksActivity : AppCompatActivity() {
