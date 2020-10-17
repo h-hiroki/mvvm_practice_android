@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_navigation_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/bottom_navigation_home"/>
+
+    <item
+        android:id="@+id/bottom_navigation_dms"
+        android:icon="@drawable/ic_baseline_chat_bubble_outline_24"
+        android:title="@string/bottom_navigation_dms"/>
+</menu>
