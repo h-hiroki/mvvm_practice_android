@@ -15,6 +15,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        def SLACK_ACCESS_TOKEN = properties.getProperty("slack_access_token")
+        buildConfigField("String", "SLACK_ACCESS_TOKEN", "\"${SLACK_ACCESS_TOKEN}\"")
     }
 
     buildTypes {
@@ -39,6 +45,26 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
+
+    // RX
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    // Retrofit
+    def retrofit = "2.5.0"
+    def moshi = "1.8.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
+    implementation "com.squareup.moshi:moshi:$moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation "com.squareup.okhttp3:okhttp:3.12.0"
+
+    // Log
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
