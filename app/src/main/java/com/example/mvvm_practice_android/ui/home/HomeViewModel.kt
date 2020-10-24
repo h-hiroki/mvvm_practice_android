@@ -12,13 +12,15 @@ class HomeViewModel : ViewModel() {
 
     fun loadData(): Single<ChannelListResponse> {
 
-        Log.i("sss", "in loadData")
         return slackRepository.getChannelList()
-            .doOnSuccess{
-                Log.i("sss", "success")
+            .doOnSuccess {
+                Log.d("view model", "on success")
             }
             .doOnError {
-                Log.e("sss","error!!")
+                Log.d("view model", "on error")
+            }
+            .doFinally {
+                Log.d("view model", "on finally")
             }
     }
 }

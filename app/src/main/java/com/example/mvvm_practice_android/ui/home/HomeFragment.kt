@@ -1,7 +1,6 @@
 package com.example.mvvm_practice_android.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +22,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("sss", "on createview")
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
         viewModel = HomeViewModel()
         viewModel.loadData()

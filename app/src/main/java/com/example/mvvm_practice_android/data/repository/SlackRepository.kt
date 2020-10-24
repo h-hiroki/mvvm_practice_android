@@ -1,5 +1,6 @@
 package com.example.mvvm_practice_android.data.repository
 
+import android.util.Log
 import com.example.mvvm_practice_android.BuildConfig
 import com.example.mvvm_practice_android.data.api.SlackService
 import com.example.mvvm_practice_android.data.response.ChannelListResponse
@@ -19,24 +20,25 @@ class SlackRepository {
         const val BASE_URL = "https://slack.com"
     }
 
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+
+    private val api = retrofit.create(SlackService::class.java)
 
     fun getChannelList(): Single<ChannelListResponse> {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(
-                Moshi.Builder()
-                    .add(KotlinJsonAdapterFactory())
-                    .build()
-            ))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-
-        val api = retrofit.create(SlackService::class.java)
-
-
+        Log.i("slack repository", "in channel list")
         return api.getChannelList(SLACK_ACCESS_TOKEN)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSuccess {}
+            .doOnSuccess {
+                Log.d("slack repository", "in do on success")
+            }
     }
 }
