@@ -1,6 +1,7 @@
 package com.example.mvvm_practice_android.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +25,6 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
         viewModel = HomeViewModel()
-        viewModel.loadData()
         binding.viewModel = viewModel
 
         return binding.root
@@ -33,5 +33,15 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.loadData()
+            .subscribe(
+                {
+                    Log.i("fragment", "on success")
+                    binding.viewModel?.presidentTextView = it.channels.toString()
+                },
+                {
+                    Log.i("fragment", "on error")
+                    throw it
+                }
+            )
     }
 }

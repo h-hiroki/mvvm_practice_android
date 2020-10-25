@@ -6,5 +6,9 @@ import com.squareup.moshi.Json
 data class ChannelListResponse(
     val ok: Boolean,
     val channels: List<Channel>,
-    @Json(name = "response_metadata") val responseMetadata: String?
-)
+    @Json(name = "response_metadata") val responseMetadata: responseMetadataResponse?
+) {
+    data class responseMetadataResponse(
+        @Json(name = "next_cursor") val nextCursor: String?
+    )
+}
