@@ -27,21 +27,21 @@ class HomeFragment : Fragment() {
         viewModel = HomeViewModel()
         binding.viewModel = viewModel
 
+        // TODO disposeしなくても良いのかな？確認しておくこと
+        viewModel.loadData()
+            .subscribe(
+                {
+                    Log.i("fragment", "on success")
+                    binding.viewModel?.presidentTextView?.set(it.channels[1].name.toString())
+                    Log.i("fragment", "on success end.")
+                },
+                { throw it }
+            )
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.loadData()
-            .subscribe(
-                {
-                    Log.i("fragment", "on success")
-                    binding.viewModel?.presidentTextView = it.channels.toString()
-                },
-                {
-                    Log.i("fragment", "on error")
-                    throw it
-                }
-            )
     }
 }
