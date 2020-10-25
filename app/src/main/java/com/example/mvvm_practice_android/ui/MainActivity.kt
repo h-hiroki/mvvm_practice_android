@@ -3,6 +3,7 @@ package com.example.mvvm_practice_android.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mvvm_practice_android.R
+import com.example.mvvm_practice_android.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -13,6 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, HomeFragment())
+            .commit()
     }
 
 
